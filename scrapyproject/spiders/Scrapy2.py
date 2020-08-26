@@ -43,7 +43,7 @@ class MyTextSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        for htmltext in response.xpath('.//div[@class="tab-content"]'):
+        for text in response.xpath('.//div[@class="tab-content"]'):
 
             relative_image = htmltext.xpath('//a/img/@src').getall()
             p1 = htmltext.xpath('.//p/text()').getall()
@@ -56,3 +56,16 @@ class MyTextSpider(scrapy.Spider):
                 'p': p1,
 
             }
+
+class MyEntireSpider(scrapy.Spider):
+    name = 'http2'
+    start_urls = ["http://172.18.58.238/spicyx/"]
+
+    rules = (
+        Rule(LinkExtractor(), callback='parse_item', follow=True),)
+
+    def parse(self, response):
+            filename = response.url.split("/")[-2] + '.json'
+            with open(filename, 'wb') as f:
+                f.write(response.body)
+            # scrapy crawl http -o http.json
