@@ -70,11 +70,4 @@ class MyEntireSpider(scrapy.Spider):
                 f.write(response.body)
             # scrapy crawl http -o http.json
 
-class testspider(unittest.TestCase):
 
-    def test_1(self):
-        pass
-
-
-if __name__ == '__main__':
-    unittest.main()
