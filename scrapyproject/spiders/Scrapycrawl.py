@@ -1,5 +1,6 @@
 import scrapy
 import requests
+import unittest
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 
@@ -70,4 +71,11 @@ class MyEntireSpider(scrapy.Spider):
                 f.write(response.body)
             # scrapy crawl http -o http.json
 
+class Testspider(unittest.TestCase):
 
+    def test_1(self):
+        pass
+
+
+if __name__ == '__main__':
+    unittest.main()
