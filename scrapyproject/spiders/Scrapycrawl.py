@@ -69,3 +69,12 @@ class MyEntireSpider(scrapy.Spider):
             with open(filename, 'wb') as f:
                 f.write(response.body)
             # scrapy crawl http -o http.json
+
+class testspider(unittest.TestCase):
+
+    def test_1(self):
+        pass
+
+
+if __name__ == '__main__':
+    unittest.main()
